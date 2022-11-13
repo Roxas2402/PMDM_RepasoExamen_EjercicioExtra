@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,19 +49,19 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new GridLayoutManager(this, 1);
         binding.contenedorMain.contenedor.setLayoutManager(layoutManager);
         binding.contenedorMain.contenedor.setAdapter(adapters);
-
-        iniciaLauncher();
-
-
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launcherCrearPartido.launch(new Intent(MainActivity.this, CrearPartidosActivity.class));
             }
         });
+
+        iniciaLauncher();
     }
 
+
     private void iniciaLauncher() {
+
         launcherCrearPartido = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
@@ -74,5 +75,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("LISTA", partidoModelList);
+    }
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        ArrayList<PartidoModel> kk = (ArrayList<PartidoModel>) savedInstanceState.get("LISTA");
+        partidoModelList.addAll(kk);
+        adapters.notifyItemRangeInserted(0, partidoModelList.size());
+    }
+
+
 }

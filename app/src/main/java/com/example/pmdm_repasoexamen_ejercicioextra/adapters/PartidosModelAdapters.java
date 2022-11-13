@@ -1,8 +1,11 @@
 package com.example.pmdm_repasoexamen_ejercicioextra.adapters;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +29,6 @@ import java.util.List;
 public class PartidosModelAdapters extends RecyclerView.Adapter<PartidosModelAdapters.PartidoVH>{
 
 
-    ActivityResultLauncher<Intent> launcherMostrarPartido;
     private MainActivity main;
 
 
@@ -62,12 +64,20 @@ public class PartidosModelAdapters extends RecyclerView.Adapter<PartidosModelAda
             }
         });
 
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launcherMostrarPartido.launch(MainActivity.this, MostrarPartidoActivity.class);
+                Intent intent = new Intent(context, MostrarPartidoActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("PARTI", p);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
+
     }
 
 
@@ -76,11 +86,6 @@ public class PartidosModelAdapters extends RecyclerView.Adapter<PartidosModelAda
         builder.setCancelable(true);
         builder.setTitle(p.getPartido());
         builder.setMessage("El equipo ganador es: " + p.getPartido());
-        //View partidoView = LayoutInflater.from(context).inflate(R.layout.activity_crear_partidos, null);
-
-        //TextView resultado = partidoView.findViewById(R.id.txtResultadoCrear);
-
-        //builder.setView(partidoView);
         return builder.create();
     }
 
