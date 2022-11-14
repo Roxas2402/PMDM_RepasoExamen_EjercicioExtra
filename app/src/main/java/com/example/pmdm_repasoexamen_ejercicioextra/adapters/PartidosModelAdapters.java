@@ -64,22 +64,17 @@ public class PartidosModelAdapters extends RecyclerView.Adapter<PartidosModelAda
             }
         });
 
-
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MostrarPartidoActivity.class);
-
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("PARTI", p);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
         });
-
     }
-
 
     private AlertDialog verPartido(PartidoModel p) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

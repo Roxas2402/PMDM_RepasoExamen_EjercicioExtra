@@ -15,7 +15,6 @@ public class MostrarPartidoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_partido);
 
@@ -26,7 +25,6 @@ public class MostrarPartidoActivity extends AppCompatActivity {
         lblPartido.setText(p.getPartido());
         lblResultado.setText(p.getResultado());
         lblDescripcion.setText(p.getDescripcion());
-
     }
 
     private void inicializa() {

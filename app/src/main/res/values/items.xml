@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources><string-array name="planets_array">
-    <item>Seleccione un partido</item>
-    <item>Madrid - Valencia</item>
-    <item>Barça - Levante</item>
-    <item>Betis - Sevilla</item>
-    <item>Atlético de Madrid - Osasuna</item>
-</string-array>
-</resources>

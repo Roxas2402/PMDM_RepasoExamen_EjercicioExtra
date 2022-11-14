@@ -9,4 +9,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="superStrings">
+        <item>Seleccione un partido</item>
+        <item>Madrid - Valencia</item>
+        <item>Barça - Levante</item>
+        <item>Betis - Sevilla</item>
+        <item>Atlético de Madrid - Osasuna</item>
+    </string-array>
 </resources>
